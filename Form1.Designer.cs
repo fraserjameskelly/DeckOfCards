@@ -36,6 +36,7 @@
             this.lblMessage = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
             this.picDrawn = new System.Windows.Forms.PictureBox();
+            this.lblDiscards = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picDrawn)).BeginInit();
             this.SuspendLayout();
             // 
@@ -104,7 +105,6 @@
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(240, 40);
             this.lblMessage.TabIndex = 5;
-            this.lblMessage.Text = "";
             // 
             // btnReset
             // 
@@ -128,12 +128,24 @@
             this.picDrawn.TabIndex = 7;
             this.picDrawn.TabStop = false;
             // 
+            // lblDiscards
+            // 
+            this.lblDiscards.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDiscards.ForeColor = System.Drawing.Color.White;
+            this.lblDiscards.Location = new System.Drawing.Point(412, 412);
+            this.lblDiscards.Name = "lblDiscards";
+            this.lblDiscards.Size = new System.Drawing.Size(240, 40);
+            this.lblDiscards.TabIndex = 8;
+            this.lblDiscards.Text = "0 cards in discard pile";
+            this.lblDiscards.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Green;
             this.ClientSize = new System.Drawing.Size(664, 461);
+            this.Controls.Add(this.lblDiscards);
             this.Controls.Add(this.picDrawn);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.lblMessage);
@@ -157,6 +169,7 @@
         private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.PictureBox picDrawn;
+        private System.Windows.Forms.Label lblDiscards;
     }
 }
 

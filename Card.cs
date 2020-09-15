@@ -22,6 +22,9 @@ namespace DeckOfCards
         Unset
     }
 
+    /// <summary>
+    /// Card model
+    /// </summary>
     public class Card
     {
         public int Index { get; set; }
@@ -36,6 +39,8 @@ namespace DeckOfCards
             Index = -1;
             Name = string.Empty;
             Value = -1;
+            Suit = Suit.Unset;
+            Colour = Colour.Unset;
             Image = string.Empty;
         }
 

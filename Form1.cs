@@ -6,8 +6,6 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DeckOfCards
@@ -29,6 +27,9 @@ namespace DeckOfCards
             Deck = Dealer.Init();
         }
 
+        /// <summary>
+        /// Shuffle the current Deck
+        /// </summary>
         private void btnShuffle_Click(object sender, EventArgs e)
         {
             ResetIfEmpty();
@@ -50,6 +51,9 @@ namespace DeckOfCards
             Deck = sorted;
         }
 
+        /// <summary>
+        /// Sort the current Deck by Suit
+        /// </summary>
         private void btnSortBySuit_Click(object sender, EventArgs e)
         {
             ResetIfEmpty();
@@ -57,6 +61,9 @@ namespace DeckOfCards
             Deck = Deck.OrderBy(o => o.Suit).ThenBy(o => o.Index).ToList();
         }
 
+        /// <summary>
+        /// Sort the current Deck by Value (Asc)
+        /// </summary>
         private void btnSortByValue_Click(object sender, EventArgs e)
         {
             ResetIfEmpty();
@@ -64,27 +71,40 @@ namespace DeckOfCards
             Deck = Deck.OrderBy(o => o.Index).ThenBy(o => o.Suit).ToList();
         }
 
+        /// <summary>
+        /// Deal the top card onto the table
+        /// </summary>
         private void btnDraw_Click(object sender, EventArgs e)
         {
-            if (Drawn != null)
+            //if there is a card on the table, and still remaining cards in the Deck
+            if (Drawn != null && Deck.Count > 0)
             {
+                //add current card to the discard pile
                 Discards.Add(Drawn);
+                lblDiscards.Text = Discards.Count + " cards in discard pile";
             }
 
+            //if there are still cards in the Deck
             if (Deck.Count > 0)
             {
+                //grab the first one, and remove from the Deck
                 Drawn = Deck.First();
                 Deck.RemoveAt(0);
 
+                //render image of the drawn card
                 picDrawn.Image = Image.FromFile(
                   Path.Combine(
                      Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
                      "Images/" + Drawn.Image + ".png"));
                 picDrawn.SizeMode = PictureBoxSizeMode.Zoom;
-            }
-            else
-            {
-                lblMessage.Text = "End of deck. Please re-shuffle.";
+
+                //if there are no cards left in the Deck
+                if (Deck.Count == 0)
+                {
+                    //hide draw button and notify the user
+                    btnDraw.Visible = false;
+                    lblMessage.Text = "End of deck. Please re-shuffle.";
+                }
             }
         }
 
@@ -93,15 +113,21 @@ namespace DeckOfCards
             ClearTable();
         }
 
+        /// <summary>
+        /// Reloads and repopulates the 52-card deck, and resets all notifications
+        /// </summary>
         private void ClearTable()
         {
             Deck = Dealer.Init();
             Discards.Clear();
             Drawn = null;
 
+            btnDraw.Visible = true;
             picDrawn.Image = null;
+            lblDiscards.Text = "0 cards in discard pile";
             lblMessage.Text = string.Empty;
         }
+
         private void ResetIfEmpty()
         {
             if (Deck.Count == 0)

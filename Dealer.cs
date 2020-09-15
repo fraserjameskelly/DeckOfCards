@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DeckOfCards
 {
+    /// <summary>
+    /// Helper class to setup the initial 52-card Deck
+    /// </summary>
     public class Dealer
     {
         public List<Card> Init()

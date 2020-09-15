@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DeckOfCards
 {
+    /// <summary>
+    /// Helper class for any additional functions
+    /// </summary>
     public class CardHelper
     {
         public static Colour GetColour(Suit suit)
