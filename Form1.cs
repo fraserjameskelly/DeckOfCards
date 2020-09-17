@@ -19,6 +19,7 @@ namespace DeckOfCards
         Card Drawn = null;
         //Discard pile
         List<Card> Discards = new List<Card>();
+
         public Form1()
         {
             //init form

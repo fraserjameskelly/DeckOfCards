@@ -15,14 +15,20 @@ namespace DeckOfCards
         {
             var deck = new List<Card>();
 
-            deck.AddRange(AddSuit(Suit.Clubs));
-            deck.AddRange(AddSuit(Suit.Spades));
-            deck.AddRange(AddSuit(Suit.Hearts));
-            deck.AddRange(AddSuit(Suit.Diamonds));
+            //enumerate each suit and add each value to the Deck
+            foreach (Suit suit in (Suit[])Enum.GetValues(typeof(Suit)))
+            {
+                deck.AddRange(AddSuit(suit));
+            }
 
             return deck;
         }
 
+        /// <summary>
+        /// Create a list of 13 cards for each value in a suit of standard cards
+        /// </summary>
+        /// <param name="suit">The suit of this set of Cards</param>
+        /// <returns>List of 13 Cards. Values Ace, 2 - 10, and Face Cards</returns>
         private List<Card> AddSuit(Suit suit)
         {
             var suitCards = new List<Card>();

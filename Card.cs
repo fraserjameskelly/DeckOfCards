@@ -11,15 +11,13 @@ namespace DeckOfCards
         Clubs,
         Spades,
         Hearts,
-        Diamonds,
-        Unset
+        Diamonds
     }
 
     public enum Colour
     {
         Black,
-        Red,
-        Unset
+        Red
     }
 
     /// <summary>
@@ -39,8 +37,6 @@ namespace DeckOfCards
             Index = -1;
             Name = string.Empty;
             Value = -1;
-            Suit = Suit.Unset;
-            Colour = Colour.Unset;
             Image = string.Empty;
         }
 
